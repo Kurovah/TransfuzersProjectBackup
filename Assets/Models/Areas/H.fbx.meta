@@ -7,16 +7,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BarkMat
-    second: {fileID: 2100000, guid: df2b0887b3ed7ef4d903631d57c107fa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BaseMat
-    second: {fileID: 2100000, guid: 631253ea45f90f444908cce1fd18b1c2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: No Name
     second: {fileID: 2100000, guid: 631253ea45f90f444908cce1fd18b1c2, type: 2}
   materials:
@@ -100,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 10
+    globalScale: 0.099999994
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
