@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.3371, g: 325.05005, b: 430.21954, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b72779514339cda42a2dbe02cd545b35, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 3b794c7aa9a5e4a4ba98274928bf0230, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -405,7 +405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &129598756
 Transform:
   m_ObjectHideFlags: 0
@@ -1152,7 +1152,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6913183, y: 1}
+    m_SensorSize: {x: 2.2351916, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -2513,7 +2513,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6913183, y: 1}
+    m_SensorSize: {x: 2.2351916, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -3365,10 +3365,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5753896101670921644, guid: 7f1d74decd6204c429ac2ebf045298a3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8585504707064336514, guid: 7f1d74decd6204c429ac2ebf045298a3, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927470207615372581, guid: 7f1d74decd6204c429ac2ebf045298a3, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9097915071825313976, guid: 7f1d74decd6204c429ac2ebf045298a3, type: 3}
@@ -3377,7 +3381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9097915071825313976, guid: 7f1d74decd6204c429ac2ebf045298a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -40
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 9097915071825313976, guid: 7f1d74decd6204c429ac2ebf045298a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3504,7 +3508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 601ea62dd94247a49ac74432038d74f6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601ea62dd94247a49ac74432038d74f6, type: 3}
@@ -3639,7 +3643,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6913183, y: 1}
+    m_SensorSize: {x: 2.2351916, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4677,7 +4681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdd8ca2fae690da4b82c1e4a2f4837e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.47657
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdd8ca2fae690da4b82c1e4a2f4837e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4701,7 +4705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdd8ca2fae690da4b82c1e4a2f4837e9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdd8ca2fae690da4b82c1e4a2f4837e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5020,6 +5024,51 @@ Transform:
   m_Father: {fileID: 860076196}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1893596940
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893596942}
+  - component: {fileID: 1893596941}
+  m_Layer: 0
+  m_Name: StaticLightingSky
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1893596941
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893596940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441482e8936e35048a1dffac814e3ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Profile: {fileID: 11400000, guid: 582adbd84082fdb4faf7cd4beb1ccd14, type: 2}
+  m_StaticLightingSkyUniqueID: 1
+--- !u!4 &1893596942
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893596940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1945087083
 GameObject:
   m_ObjectHideFlags: 3
@@ -5088,7 +5137,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6913183, y: 1}
+    m_SensorSize: {x: 2.2351916, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
