@@ -11,7 +11,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private Transform towerTest;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera mainCamera;
-
+    
     private TowerHUD _hud;
 
     void Awake()
@@ -21,7 +21,7 @@ public class BuildingManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && mainCamera.isActiveAndEnabled)
         {
             Vector3 towerPosition = -Vector3.one;
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
