@@ -8,26 +8,42 @@ public class GameController : MonoBehaviour
     public GameObject Spawner1;
     public GameObject Spawner2;
     public GameObject Spawner3;
+    public int ShipHP;
     float minionsAlive;
     public Vector3[] minionsTab;
     public float timeDay;
     int wave;
     public Text text;
     bool minionsSpawned;
-
+    public GameObject SideAreaPrefab;
+    public GameObject LoadingScreen;
+    Vector3 SideAreaPosition;
+    public GameObject player;
+    float loadingScreenTime;
+    public GameObject TeleportScreen;
     void Start()
     {
         timeDay = 0;
         wave = 0;
         minionsSpawned = false;
+        SideAreaPosition = new Vector3(500, 0, 500);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         text.text = ((int) timeDay).ToString();
         if (timeDay > 0 && minionsAlive<=0)
             timeDay -= Time.deltaTime;
+        if (loadingScreenTime > 0)
+        {
+            loadingScreenTime -= Time.deltaTime;
+        }
+        else
+        {
+            LoadingScreen.SetActive(false);
+        }
         if (timeDay <= 0 && wave<10 && !minionsSpawned)
         {
             Debug.Log(wave);
@@ -44,9 +60,26 @@ public class GameController : MonoBehaviour
             timeDay = 3;
             minionsSpawned = false;
         }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(TeleportScreen.activeSelf)
+                TeleportScreen.SetActive(false);
+            else
+                TeleportScreen.SetActive(true);
+        }
     }
     public void EnemyDied()
     {
         minionsAlive--;
+        
+    }
+    public void Teleport(GameObject area)
+    {
+        LoadingScreen.SetActive(true);
+        loadingScreenTime = 5;
+        Instantiate(area, SideAreaPosition, transform.rotation);
+        player.transform.position = SideAreaPosition;
+        TeleportScreen.SetActive(false);
+        
     }
 }

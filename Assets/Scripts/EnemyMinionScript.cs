@@ -6,9 +6,9 @@ public class EnemyMinionScript : MonoBehaviour
 {
     private enum State
     {
-        Tower,
-        Ship,
         Nothing,
+        Ship,
+        Attack,
         Die,
     }
     public Animator animator;
@@ -33,7 +33,7 @@ public class EnemyMinionScript : MonoBehaviour
         animator.SetBool("Walk Forward", true);
         seeker.StartPath(transform.position, ship.transform.position, OnPathCompleted);
         state = State.Nothing;
-        
+        //Physics.IgnoreLayerCollision(10, 10);
     }
 
     private void FixedUpdate()
@@ -49,15 +49,17 @@ public class EnemyMinionScript : MonoBehaviour
                 }
                 break;
             case State.Ship:
-                if (currentWaypoint >= path.vectorPath.Count)
+                
+                if ((ship.transform.position - gameObject.transform.position).magnitude<5)
                 {
                     state = State.Die;
                     break;
                 }
                 EnemyMovement();
                 break;
-            case State.Tower:
+            case State.Attack:
                 //Add interactions with towers.
+                Attack();
                 break;
             case State.Die:
                 gameController.SendMessage("EnemyDied");
@@ -65,15 +67,7 @@ public class EnemyMinionScript : MonoBehaviour
                 break;
         }
     }
-
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == ship.tag)
-        {
-            state = State.Die;
-        }
-    }
     #region Functions
     //Enemy Moving towards function.
     public void EnemyMovement()
@@ -88,6 +82,11 @@ public class EnemyMinionScript : MonoBehaviour
         {
             currentWaypoint++;
         }
+    }
+    public void Attack()
+    {
+        animator.SetBool("Walk Forward", false);
+        animator.SetTrigger("Stab Attack");
     }
     public void OnPathCompleted(Path p)
     {
