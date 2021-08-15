@@ -21,12 +21,14 @@ public class GameController : MonoBehaviour
     public GameObject player;
     float loadingScreenTime;
     public GameObject TeleportScreen;
+    public Transform spawnPoint;
     void Start()
     {
         timeDay = 0;
-        wave = 0;
+        wave = 8;
         minionsSpawned = false;
         SideAreaPosition = new Vector3(500, 0, 500);
+        ShipHP = 30;
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class GameController : MonoBehaviour
         }
         if (minionsAlive <= 0 && minionsSpawned)
         {
-            timeDay = 3;
+            timeDay = 10;
             minionsSpawned = false;
         }
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -76,10 +78,17 @@ public class GameController : MonoBehaviour
     public void Teleport(GameObject area)
     {
         LoadingScreen.SetActive(true);
-        loadingScreenTime = 5;
+        loadingScreenTime = 2;
         Instantiate(area, SideAreaPosition, transform.rotation);
         player.transform.position = SideAreaPosition;
         TeleportScreen.SetActive(false);
         
+    }
+    public void Back()
+    {
+        LoadingScreen.SetActive(true);
+        loadingScreenTime = 2;
+        player.transform.position = spawnPoint.position;
+        TeleportScreen.SetActive(false);
     }
 }

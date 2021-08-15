@@ -24,16 +24,20 @@ public class EnemyMinionScript : MonoBehaviour
     private float turnSmoothVelocity;
     private State state;
     GameObject gameController;
+    public int hp;
+    GameController gameControllerScript;
     // Start is called before the first frame update
     void Start()
     {
         ship = GameObject.FindGameObjectWithTag("Ship");
         gameController = GameObject.FindGameObjectWithTag("GameController");
+        gameControllerScript = gameController.GetComponent<GameController>();
         target = ship;
         animator.SetBool("Walk Forward", true);
         seeker.StartPath(transform.position, ship.transform.position, OnPathCompleted);
         state = State.Nothing;
         //Physics.IgnoreLayerCollision(10, 10);
+        hp = 100;
     }
 
     private void FixedUpdate()
@@ -52,13 +56,17 @@ public class EnemyMinionScript : MonoBehaviour
                 
                 if ((ship.transform.position - gameObject.transform.position).magnitude<5)
                 {
+                    state = State.Attack;
+                    break;
+                }
+                if (hp <= 0)
+                {
                     state = State.Die;
                     break;
                 }
                 EnemyMovement();
                 break;
             case State.Attack:
-                //Add interactions with towers.
                 Attack();
                 break;
             case State.Die:
@@ -85,8 +93,9 @@ public class EnemyMinionScript : MonoBehaviour
     }
     public void Attack()
     {
-        animator.SetBool("Walk Forward", false);
-        animator.SetTrigger("Stab Attack");
+        gameController.SendMessage("EnemyDied");
+        gameControllerScript.ShipHP -= 1;
+        Destroy(gameObject);
     }
     public void OnPathCompleted(Path p)
     {

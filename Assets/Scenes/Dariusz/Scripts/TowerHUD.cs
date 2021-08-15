@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TowerHUD : MonoBehaviour
 {
     [SerializeField] private Button button;
-    [SerializeField] private Camera activeCamera;
+    [SerializeField] private GameObject activeCamera;
     [SerializeField] private GameObject canvas;
     public static TowerHUD Instance { get; private set; }
 
@@ -28,15 +28,23 @@ public class TowerHUD : MonoBehaviour
 
     private void SetHUDActive()
     {
-        switch (activeCamera.isActiveAndEnabled)
+        switch (activeCamera.activeSelf == true)
         {
             case true:
                 canvas.SetActive(true);
+                Debug.Log("yes");
                 break;
             case false:
                 canvas.SetActive(false);
                 break;
         }
-
+        if(activeCamera.activeSelf == true)
+        {
+            canvas.SetActive(true);
+        }
+        else
+        {
+            canvas.SetActive(true);
+        }
     }
 }

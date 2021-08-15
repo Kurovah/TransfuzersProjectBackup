@@ -8,7 +8,7 @@ using UnityEngine.Diagnostics;
 public class BuildingManager : MonoBehaviour
 {
     
-    [SerializeField] private Transform towerTest;
+    [SerializeField] private GameObject towerTest;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera mainCamera;
     

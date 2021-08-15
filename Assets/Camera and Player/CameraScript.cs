@@ -27,7 +27,7 @@ public class CameraScript : MonoBehaviour
     }
     void HandleMouseInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -39,7 +39,7 @@ public class CameraScript : MonoBehaviour
                 dragStartPosition = ray.GetPoint(entry);
             }
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

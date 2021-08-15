@@ -8,7 +8,7 @@ using UnityEngine.SocialPlatforms;
 public class TowerBehaviour : MonoBehaviour
 {
 
-    [SerializeField] private Transform target;
+    [SerializeField] private GameObject target;
     [SerializeField] private Transform tower;
     [SerializeField] private float fireCountdown = 0f;
     public GameObject bulletPrefab;
@@ -31,7 +31,7 @@ public class TowerBehaviour : MonoBehaviour
         if (target == null)
             return;
 
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.transform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(tower.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         tower.rotation = Quaternion.Euler(0.0f, rotation.y, 0.0f);
@@ -72,7 +72,7 @@ public class TowerBehaviour : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
-            target = nearestEnemy.transform;
+            target = nearestEnemy;
         }
         else
         {
