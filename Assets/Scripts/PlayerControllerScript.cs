@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControllerScript : MonoBehaviour
+public class PlayerControllerScript : MonoBehaviour, IHurtable
 {
     public float moveSpeed;
     Vector3 moveDir;
@@ -95,5 +95,15 @@ public class PlayerControllerScript : MonoBehaviour
                 hasHit.Add(collider);
             }
         }
+    }
+
+    public void OnHurt()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnDeath()
+    {
+        throw new System.NotImplementedException();
     }
 }
