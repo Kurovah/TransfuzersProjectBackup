@@ -36,7 +36,7 @@ public class EnemyMinionScript : MonoBehaviour
         animator.SetBool("Walk Forward", true);
         seeker.StartPath(transform.position, ship.transform.position, OnPathCompleted);
         state = State.Nothing;
-        //Physics.IgnoreLayerCollision(10, 10);
+        Physics.IgnoreLayerCollision(10, 10);
         hp = 100;
     }
 
@@ -57,6 +57,7 @@ public class EnemyMinionScript : MonoBehaviour
                 if ((ship.transform.position - gameObject.transform.position).magnitude<5)
                 {
                     state = State.Attack;
+                    animator.SetBool("Walk Forward", false);
                     break;
                 }
                 if (hp <= 0)
@@ -68,6 +69,7 @@ public class EnemyMinionScript : MonoBehaviour
                 break;
             case State.Attack:
                 Attack();
+                
                 break;
             case State.Die:
                 gameController.SendMessage("EnemyDied");
@@ -93,9 +95,11 @@ public class EnemyMinionScript : MonoBehaviour
     }
     public void Attack()
     {
-        gameController.SendMessage("EnemyDied");
+        /*gameController.SendMessage("EnemyDied");
         gameControllerScript.ShipHP -= 1;
-        Destroy(gameObject);
+        Destroy(gameObject);*/
+        
+        animator.SetTrigger("Smash Attack");
     }
     public void OnPathCompleted(Path p)
     {
