@@ -52,6 +52,14 @@ public class Item
     public string name;
 }
 
+[System.Serializable]
+public class Recipe
+{
+    public string recipieName;
+    public Dictionary<Item, int> itemsNeeded;
+    public bool unlocked;
+}
+
 public class HelperFunctions
 {
     public static IEnumerator punchValue(float value, float newValue, int smoothing)
