@@ -79,9 +79,3 @@ public class HelperFunctions
         return t > a && t < b;
     }
 }
-
-public interface IHurtable
-{
-    void OnHurt();
-    void OnDeath();
-} 
