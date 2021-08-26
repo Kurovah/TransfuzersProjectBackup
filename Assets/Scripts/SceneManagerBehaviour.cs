@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SceneManagerBehaviour : MonoBehaviour
 {
-    public Transform inventorySlots;
-    public GameObject inventoryPanel;
+    public Transform inventorySlots, itemGetNotifArea;
+    public GameObject inventoryPanel, ItemGetNotifPrefab;
     //item index quantity
     public Dictionary<int, int> inventory;
     public MasterItemList itemList;
@@ -19,7 +19,10 @@ public class SceneManagerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            InvenNotifTest();
+        }
     }
 
     void UpdateInventoryUI()
@@ -77,5 +80,11 @@ public class SceneManagerBehaviour : MonoBehaviour
     public void ToggleInventory()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+    }
+
+    public void InvenNotifTest()
+    {
+        var notif = Instantiate(ItemGetNotifPrefab, itemGetNotifArea);
+        notif.GetComponent<CollectionNotifBehaviour>().SetText("Testy Item");
     }
 }
