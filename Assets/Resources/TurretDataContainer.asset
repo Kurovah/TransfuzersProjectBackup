@@ -12,38 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28d9653994675a42bb00d0a69456ada, type: 3}
   m_Name: TurretDataContainer
   m_EditorClassIdentifier: Assembly-CSharp::RecipieList
-  list:
-  - components:
-    - itemIndex: 1
-      itemAmount: 5
-    recipieName: Standard Turret
+  turretList:
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Basic
     unlocked: 0
     displayed: 0
-  - components:
-    - itemIndex: 1
-      itemAmount: 5
-    - itemIndex: 2
-      itemAmount: 5
-    recipieName: Burning Turret
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Burning
     unlocked: 0
     displayed: 0
-  - components:
-    - itemIndex: 1
-      itemAmount: 5
-    - itemIndex: 3
-      itemAmount: 5
-    recipieName: Chilling Turret
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Voltic
     unlocked: 0
     displayed: 0
-  - components:
-    - itemIndex: 1
-      itemAmount: 5
-    recipieName: Voltic Turret
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Chilling
     unlocked: 0
     displayed: 0
-  - components:
-    - itemIndex: 1
-      itemAmount: 10
-    recipieName: Healing Turret
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Healing
     unlocked: 0
-    displayed: 1
+    displayed: 0

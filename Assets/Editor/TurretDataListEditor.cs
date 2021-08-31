@@ -55,7 +55,10 @@ public class TurretDataListEditor : Editor
         {
             rlist.turretList.Add(new TurretData());
         }
-
+        if (GUILayout.Button("save"))
+        {
+            EditorUtility.SetDirty(target);
+        }
 
     }
 }

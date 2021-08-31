@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &183929846172393920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183929846172393922}
+  - component: {fileID: 183929846172393923}
+  - component: {fileID: 183929846172393933}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &183929846172393922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183929846172393920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &183929846172393923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183929846172393920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505216b623dbe064397fced8f6d34f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  pauseTabAreas: {fileID: 0}
+  inventorySlotArea: {fileID: 0}
+  itemGetNotifArea: {fileID: 0}
+  craftableTurretOptionArea: {fileID: 0}
+  craftingComponentListingArea: {fileID: 0}
+  buildingHUD: {fileID: 0}
+  standardHUD: {fileID: 0}
+  itemGetNotifPrefab: {fileID: 2916580706559067229, guid: 6d734189e9be6314c98af732be8089c0, type: 3}
+  inventoryDisplayPrefab: {fileID: 0}
+  craftableTurretOptionPrefab: {fileID: 5150169292420653783, guid: 7ca54c181045b6d4487e5a1e93f5c835, type: 3}
+  craftingComponentPrefab: {fileID: 8265859380298611290, guid: eabe1da909f1f054a89a39867d62509d, type: 3}
+  overHeadCam: {fileID: 0}
+  thirdPersonCam: {fileID: 0}
+  itemList: {fileID: 0}
+--- !u!114 &183929846172393933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183929846172393920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75d4ea4aba6b934789a030369d958a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerIconArea: {fileID: 0}
+  towerIconPrefab: {fileID: 2673680026996368609, guid: e8f530f934d849b4b8221855810a99e9, type: 3}
+  towerTest: {fileID: 6468604648512094100, guid: f7cc84c7d523a8b48960a15024c5de27, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  TowerCam: {fileID: 0}
