@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Recipe List", menuName = "New recipe list")]
-public class RecipieList : ScriptableObject
+public class TurretDataList : ScriptableObject
 {
-    public List<Recipe> list = new List<Recipe>();
+    public List<TurretData> turretList = new List<TurretData>();
 }

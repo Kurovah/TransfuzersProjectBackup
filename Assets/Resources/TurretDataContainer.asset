@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28d9653994675a42bb00d0a69456ada, type: 3}
+  m_Name: TurretDataContainer
+  m_EditorClassIdentifier: Assembly-CSharp::RecipieList
+  list:
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    recipieName: Standard Turret
+    unlocked: 0
+    displayed: 0
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    - itemIndex: 2
+      itemAmount: 5
+    recipieName: Burning Turret
+    unlocked: 0
+    displayed: 0
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    - itemIndex: 3
+      itemAmount: 5
+    recipieName: Chilling Turret
+    unlocked: 0
+    displayed: 0
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    recipieName: Voltic Turret
+    unlocked: 0
+    displayed: 0
+  - components:
+    - itemIndex: 1
+      itemAmount: 10
+    recipieName: Healing Turret
+    unlocked: 0
+    displayed: 1

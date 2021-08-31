@@ -53,27 +53,68 @@ public class Item
 }
 
 [System.Serializable]
-public class Recipe
+public class TurretData
 {
-    public string recipieName;
-    public Dictionary<Item, int> itemsNeeded;
+    public List<RecipeComponent> components = new List<RecipeComponent>();
+    public GameObject prefab;
+    public Sprite turretIcon;
+    public string turretName;
     public bool unlocked;
+    public bool displayed;
+}
+
+[System.Serializable]
+public class RecipeComponent
+{
+    public int itemIndex;
+    public int itemAmount;
+}
+
+[System.Serializable]
+public class ItemInventory
+{
+    public Dictionary<int, int> dictionary;
+    public ItemInventory()
+    {
+        dictionary = new Dictionary<int, int>();
+    }
+
+    public ItemInventory(Dictionary<int,int> data)
+    {
+        dictionary = data;
+    }
+}
+
+[System.Serializable]
+public class TurretInventory
+{
+    public Dictionary<int, int> dictionary;
+    public TurretInventory()
+    {
+        dictionary = new Dictionary<int, int>();
+    }
+
+    public TurretInventory(Dictionary<int, int> data)
+    {
+        dictionary = data;
+    }
+}
+
+public class ColorPallette
+{
+    //this is here so that I don't have to keep memorising these
+    public static Color[] colors = {
+        new Color32(237, 255, 253,255),
+        new Color32(138,139,141,255),
+        new Color32(84,92,98,255),
+        new Color32(71,78,85,255),
+        new Color32(231, 121, 84,255),
+        new Color32(43,197,152,255),
+        };
 }
 
 public class HelperFunctions
 {
-    public static IEnumerator punchValue(float value, float newValue, int smoothing)
-    {
-        float t = 0;
-        while (t > 1)
-        {
-            float y = 4 * (-(Mathf.Pow(t, 2)) + t);
-            value = Mathf.Lerp(value, newValue, y);
-            t += smoothing;
-            yield return null;
-        }
-    }
-
     public static bool IsBetween(float a, float b, float t)
     {
         return t > a && t < b;

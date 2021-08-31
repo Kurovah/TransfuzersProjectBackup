@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecipeListEditor : MonoBehaviour
+public class PauseMenuBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
