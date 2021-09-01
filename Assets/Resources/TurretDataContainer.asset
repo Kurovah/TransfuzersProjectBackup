@@ -13,33 +13,57 @@ MonoBehaviour:
   m_Name: TurretDataContainer
   m_EditorClassIdentifier: Assembly-CSharp::RecipieList
   turretList:
-  - components: []
-    prefab: {fileID: 0}
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    prefab: {fileID: 7649751759283326031, guid: 87ecbc64b90c6fd43b6a123f00e30590, type: 3}
     turretIcon: {fileID: 0}
-    turretName: Basic
+    turretName: Basic Turret
     unlocked: 0
     displayed: 0
-  - components: []
-    prefab: {fileID: 0}
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    - itemIndex: 2
+      itemAmount: 5
+    prefab: {fileID: 7649751759283326031, guid: 87ecbc64b90c6fd43b6a123f00e30590, type: 3}
     turretIcon: {fileID: 0}
-    turretName: Burning
+    turretName: Burning Turret
     unlocked: 0
     displayed: 0
-  - components: []
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    - itemIndex: 2
+      itemAmount: 3
+    - itemIndex: 3
+      itemAmount: 3
     prefab: {fileID: 0}
     turretIcon: {fileID: 0}
-    turretName: Voltic
+    turretName: Voltic Turret
     unlocked: 0
     displayed: 0
-  - components: []
+  - components:
+    - itemIndex: 1
+      itemAmount: 5
+    - itemIndex: 3
+      itemAmount: 5
     prefab: {fileID: 0}
     turretIcon: {fileID: 0}
-    turretName: Chilling
+    turretName: Chilling Turret
     unlocked: 0
     displayed: 0
-  - components: []
+  - components:
+    - itemIndex: 1
+      itemAmount: 10
+    - itemIndex: 2
+      itemAmount: 5
+    - itemIndex: 3
+      itemAmount: 5
+    - itemIndex: 4
+      itemAmount: 10
     prefab: {fileID: 0}
     turretIcon: {fileID: 0}
-    turretName: Healing
+    turretName: Healing Turret
     unlocked: 0
     displayed: 0

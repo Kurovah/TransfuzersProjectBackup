@@ -9,7 +9,6 @@ public class BuildingManager : MonoBehaviour
 {
     public Transform towerIconArea;
     public GameObject towerIconPrefab;
-    [SerializeField] private GameObject towerTest;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera TowerCam;
     int currentIndex = -1;
@@ -26,7 +25,7 @@ public class BuildingManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && SceneManagerBehaviour.GetTurretAmount(currentIndex) > 0)
         {
             Vector3 towerPosition = -Vector3.one;
-            Ray ray = TowerCam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {

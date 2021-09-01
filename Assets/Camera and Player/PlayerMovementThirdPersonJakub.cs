@@ -8,8 +8,8 @@ public class PlayerMovementThirdPersonJakub : MonoBehaviour
     public GameObject thirdPersonCamera;
     public GameObject redZone;
     public int redMaterianNumber;
-    public float speed = 6f;
-    public float turnSmoothTime = 0.1f;
+    public float speed;
+    //public float turnSmoothTime;
     float turnSmoothVelocity;
     public Animator anim;
     public Transform model;
@@ -20,8 +20,8 @@ public class PlayerMovementThirdPersonJakub : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         
 

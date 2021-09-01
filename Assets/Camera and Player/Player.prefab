@@ -67,8 +67,7 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 0}
   redZone: {fileID: 6515398000191361946, guid: 3bfee0d444c86d94592d65e50f303c2b, type: 3}
   redMaterianNumber: 0
-  speed: 6
-  turnSmoothTime: 0.1
+  speed: 10
   anim: {fileID: 4113635890408474422}
   model: {fileID: 8067845619993386316}
 --- !u!1001 &58442905
