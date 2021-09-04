@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         timeDay = 0;
-        wave = 8;
+        wave = 0;
         minionsSpawned = false;
         SideAreaPosition = new Vector3(500, 0, 500);
         ShipHP = 30;

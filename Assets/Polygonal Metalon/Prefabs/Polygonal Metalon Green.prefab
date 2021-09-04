@@ -1206,9 +1206,10 @@ MonoBehaviour:
   animator: {fileID: 95319451835724688}
   control: {fileID: 746476256}
   seeker: {fileID: 746476257}
-  speed: 0.1
+  speed: 0.5
   currentWaypoint: 0
   direction: {x: 0, y: 0, z: 0}
+  hp: 0
 --- !u!114 &746476257
 MonoBehaviour:
   m_ObjectHideFlags: 0
