@@ -11,10 +11,10 @@ public class BulletBehaviour : MonoBehaviour
     EnemyMinionScript targetScript;
 
 
-    public void Seek(GameObject _target)
+    public void Seek(GameObject target)
     {
-       target = _target;
-        targetScript = target.GetComponent<EnemyMinionScript>();
+       this.target = target;
+        targetScript = this.target.GetComponent<EnemyMinionScript>();
     }
     
     // Update is called once per frame

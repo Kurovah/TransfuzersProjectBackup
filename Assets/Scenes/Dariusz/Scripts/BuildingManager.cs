@@ -12,11 +12,11 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera mainCamera;
     
-    private TowerHUD _hud;
+    private TowerHUD hud;
 
     void Awake()
     {
-        _hud = TowerHUD.Instance;
+        hud = TowerHUD.Instance;
     }
     
     void Update()
@@ -34,3 +34,5 @@ public class BuildingManager : MonoBehaviour
         }
     }
 }
+
+
