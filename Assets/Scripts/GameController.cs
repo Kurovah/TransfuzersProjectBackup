@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     float loadingScreenTime;
     public GameObject TeleportScreen;
     public Transform spawnPoint;
+    public Text DayCount;
     void Start()
     {
         timeDay = 0;
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DayCount.text = wave.ToString();
         if (timeDay < 360 && minionsAlive<=0)
             timeDay += Time.deltaTime;
         if (loadingScreenTime > 0)

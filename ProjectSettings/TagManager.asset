@@ -7,6 +7,7 @@ TagManager:
   - Ship
   - Tower
   - Enemy
+  - Pickable
   layers:
   - Default
   - TransparentFX
