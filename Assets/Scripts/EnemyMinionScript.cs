@@ -99,11 +99,9 @@ public class EnemyMinionScript : MonoBehaviour
     }
     public void Attack()
     {
-        /*gameController.SendMessage("EnemyDied");
+        gameController.SendMessage("EnemyDied");
         gameControllerScript.ShipHP -= 1;
-        Destroy(gameObject);*/
-        
-        animator.SetTrigger("Smash Attack");
+        Destroy(gameObject);
     }
     public void OnPathCompleted(Path p)
     {

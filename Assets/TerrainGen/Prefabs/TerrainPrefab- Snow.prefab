@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6e8d160e25960d46ab565da62ea5cf2, type: 2}
+  - {fileID: 2100000, guid: 08619bef6e03803459d58d41bd6ac23b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,25 +173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221ced047f3af2c4fbe38f489e474526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foliage:
-  - type: Trees
-    prefab: {fileID: 2013397054587969020, guid: a7279232d0a8d1641a08fcfcb0498c33, type: 3}
-    amount: 100
-    level: 15
-  - type: Grass
-    prefab: {fileID: 6616527439138752895, guid: 919716219f822074b86393548e5d47bb, type: 3}
-    amount: 800
-    level: 20
-  - type: Rocks
-    prefab: {fileID: -8679921383154817045, guid: 2d952b36bcaea414182a095b31754b29, type: 3}
-    amount: 20
-    level: 25
-  genFoliage: 1
   mesh: {fileID: 8322245921392792240}
   terrainData: {fileID: 11400000, guid: 2c23a77cfd5a44a48ba00a0cf01cdc72, type: 2}
   noiseData: {fileID: 11400000, guid: 87feefb9160a5784593f6a0d80255cbb, type: 2}
   textureData: {fileID: 11400000, guid: 697e9a9ecdd237847875ea187553b3b8, type: 2}
-  terrainMat: {fileID: 2100000, guid: c6e8d160e25960d46ab565da62ea5cf2, type: 2}
+  terrainMat: {fileID: 2100000, guid: 08619bef6e03803459d58d41bd6ac23b, type: 2}
   drawMode: 2
   mapWidth: 100
   mapHeight: 100
