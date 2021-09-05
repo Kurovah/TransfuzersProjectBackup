@@ -15,12 +15,6 @@ public class MapGen : MonoBehaviour
     //private float level = 20f;
 
 
-    [SerializeField]
-    private Foliage[] foliage;
-
-
-    [SerializeField]
-    private bool genFoliage;
 
     public MeshFilter mesh;
 
@@ -55,7 +49,7 @@ public class MapGen : MonoBehaviour
     private void Awake()
     {
 
-        //GenMap();
+        GenMap();
         
     }
 
@@ -69,49 +63,7 @@ public class MapGen : MonoBehaviour
 
     }
 
-    private void FoliageGen(string name, Transform prefab, int num, float level)
-    {
-        
-        Vector3 pos = new Vector3();
-        if (transform.Find(name))
-        {
-            Destroy(transform.Find(name).gameObject);
-            trees.Clear();
-        }
-        Transform newObject = new GameObject(name).transform;
-       
-
-        for (int i = 0; i < num; i++)
-        {
-            while (true)
-            {
-                float randomX = Random.Range(meshRend.bounds.min.x, meshRend.bounds.max.x);
-                float randomZ = Random.Range(meshRend.bounds.min.z, meshRend.bounds.max.z);
-
-                RaycastHit hit;
-                if (Physics.Raycast(new Vector3(randomX, level, randomZ), -Vector3.up, out hit))
-                {
-                    if (!trees.Contains(hit.point))
-                    {
-                        pos = hit.point;
-
-
-                        break;
-                    }
-                    ///sfa
-
-                }
-                trees.Add(pos);
-                Transform clone = Instantiate(prefab, pos, Quaternion.identity);
-
-                clone.parent = newObject;
-            }
-
-
-
-        }
-        Debug.Log("Trees " + trees.Count);
-    }
+    
     void OnValuesUpdated() 
     {
         if (!Application.isPlaying) 
@@ -152,15 +104,7 @@ public class MapGen : MonoBehaviour
         mesh.GetComponent<MeshFilter>().sharedMesh = mesh.sharedMesh;
         mesh.GetComponent<MeshCollider>().sharedMesh = mesh.sharedMesh;
         trees = new HashSet<Vector3>();
-        if (genFoliage) 
-        {
-            for (int i = 0; i < foliage.Length; i++)
-            {
-                FoliageGen(foliage[i].type, foliage[i].prefab, foliage[i].amount, foliage[i].level);
-            }
-           
-           
-        }
+        
        
     }
 
