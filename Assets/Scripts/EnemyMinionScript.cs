@@ -42,6 +42,10 @@ public class EnemyMinionScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //don't do anything if the game is paused of the playeris buildng;
+        if (SceneManagerBehaviour.isBuilding || SceneManagerBehaviour.gamePaused)
+            return;
+        
 
         switch (state)
         {

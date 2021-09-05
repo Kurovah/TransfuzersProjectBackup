@@ -9,7 +9,7 @@ public class TowerBehaviour : MonoBehaviour
 {
 
     [SerializeField] private GameObject target;
-    [SerializeField] private Transform tower;
+    public Transform tower;
     [SerializeField] private float fireCountdown = 0f;
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -21,7 +21,6 @@ public class TowerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tower = gameObject.transform;
         InvokeRepeating("UpdateTarget", 0.0f, 0.5f);
     }
 
@@ -34,7 +33,7 @@ public class TowerBehaviour : MonoBehaviour
         Vector3 dir = target.transform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(tower.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-        tower.rotation = Quaternion.Euler(0.0f, rotation.y, 0.0f);
+        tower.localRotation = Quaternion.Euler(-90, rotation.y, 0);
 
         if (fireCountdown <= 0.0f)
         {
@@ -47,7 +46,7 @@ public class TowerBehaviour : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         BulletBehaviour bullet = bulletGO.GetComponent<BulletBehaviour>();
 
         if (bullet != null)

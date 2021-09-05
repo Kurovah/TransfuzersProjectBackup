@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour
     public Vector3[] minionsTab;
     public float timeDay;
     int wave;
-    public Text text;
     bool minionsSpawned;
     public GameObject SideAreaPrefab;
     public GameObject LoadingScreen;
@@ -35,7 +34,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
-        text.text = ((int) timeDay).ToString();
+        
         if (timeDay > 0 && minionsAlive<=0)
             timeDay -= Time.deltaTime;
         if (loadingScreenTime > 0)
