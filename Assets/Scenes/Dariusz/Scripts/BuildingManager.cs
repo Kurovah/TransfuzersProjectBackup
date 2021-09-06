@@ -12,17 +12,26 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera TowerCam;
     int currentIndex = -1;
-    
+    bool placing;
     private TowerHUD _hud;
 
     void Awake()
     {
         _hud = TowerHUD.Instance;
+        placing = false;
     }
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && SceneManagerBehaviour.GetTurretAmount(currentIndex) > 0)
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (placing)
+                placing = false;
+            else
+                placing = true;
+        }
+        
+        if (Input.GetMouseButtonDown(0) && SceneManagerBehaviour.GetTurretAmount(currentIndex) > 0 && placing)
         {
             Vector3 towerPosition = -Vector3.one;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

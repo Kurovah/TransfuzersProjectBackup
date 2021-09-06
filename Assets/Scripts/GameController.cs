@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         timeDay = 0;
-        wave = 0;
+        wave = 1;
         minionsSpawned = false;
         SideAreaPosition = new Vector3(1500, 0, 1500);
         ShipHP = 30;
@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         DayCount.text = wave.ToString();
-        if (timeDay < 120 && minionsAlive<=0)
+        if (timeDay < 60 && minionsAlive<=0)
             timeDay += Time.deltaTime;
         if (loadingScreenTime > 0)
         {
@@ -48,14 +48,14 @@ public class GameController : MonoBehaviour
         {
             LoadingScreen.SetActive(false);
         }
-        if (timeDay >= 120 && wave<10 && !minionsSpawned)
+        if (timeDay >= 60 && wave<10 && !minionsSpawned)
         {
             Debug.Log(wave);
             Spawner1.SendMessage("NewEnemy", minionsTab[wave].x);
             Spawner2.SendMessage("NewEnemy", minionsTab[wave].y);
             Spawner3.SendMessage("NewEnemy", minionsTab[wave].z);
             minionsAlive = minionsTab[wave].x  + minionsTab[wave].y + minionsTab[wave].z;
-            wave++;
+            
             minionsSpawned = true;
             Debug.Log(minionsAlive);
         }
@@ -63,16 +63,17 @@ public class GameController : MonoBehaviour
         {
             timeDay = 0;
             minionsSpawned = false;
+            wave++;
         }
         if (Input.GetKeyDown(KeyCode.Tab) )
         {
             if(TeleportScreen.activeSelf)
                 TeleportScreen.SetActive(false);
             else
-                if(timeDay<120)
+                if(timeDay< 60)
                     TeleportScreen.SetActive(true);
         }
-        if(timeDay>= 120 && player.transform.position.magnitude >1000)
+        if(timeDay>= 60 && player.transform.position.magnitude >1000)
         {
             player.transform.position = spawnPoint.transform.position;
         }
