@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour
     public GameObject TeleportScreen;
     public Transform spawnPoint;
     public Text DayCount;
+    public GameObject pickableController;
+    GameObject side;
+    GameObject pickCont;
     void Start()
     {
         timeDay = 0;
@@ -35,7 +38,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         DayCount.text = wave.ToString();
-        if (timeDay < 360 && minionsAlive<=0)
+        if (timeDay < 120 && minionsAlive<=0)
             timeDay += Time.deltaTime;
         if (loadingScreenTime > 0)
         {
@@ -45,7 +48,7 @@ public class GameController : MonoBehaviour
         {
             LoadingScreen.SetActive(false);
         }
-        if (timeDay >= 360 && wave<10 && !minionsSpawned)
+        if (timeDay >= 120 && wave<10 && !minionsSpawned)
         {
             Debug.Log(wave);
             Spawner1.SendMessage("NewEnemy", minionsTab[wave].x);
@@ -66,10 +69,10 @@ public class GameController : MonoBehaviour
             if(TeleportScreen.activeSelf)
                 TeleportScreen.SetActive(false);
             else
-                if(timeDay<345)
+                if(timeDay<120)
                     TeleportScreen.SetActive(true);
         }
-        if(timeDay>= 345 && player.transform.position.magnitude >1000)
+        if(timeDay>= 120 && player.transform.position.magnitude >1000)
         {
             player.transform.position = spawnPoint.transform.position;
         }
@@ -83,13 +86,16 @@ public class GameController : MonoBehaviour
     {
         LoadingScreen.SetActive(true);
         loadingScreenTime = 2;
-        Instantiate(area, SideAreaPosition, transform.rotation);
-        player.transform.position = SideAreaPosition + new Vector3(0, 5, 0);
+        side = Instantiate(area, SideAreaPosition, transform.rotation);
+        pickCont = Instantiate(pickableController, SideAreaPosition+new Vector3(0,2,0), transform.rotation);
+        player.transform.position = SideAreaPosition + new Vector3(0, 2, 0);
         TeleportScreen.SetActive(false);
         
     }
     public void Back()
     {
+        Destroy(side);
+        Destroy(pickCont);
         LoadingScreen.SetActive(true);
         loadingScreenTime = 2;
         player.transform.position = spawnPoint.position;

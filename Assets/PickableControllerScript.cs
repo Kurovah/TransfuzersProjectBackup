@@ -9,13 +9,31 @@ public class PickableControllerScript : MonoBehaviour
     public GameObject pickablePrefab;
     public GameObject player;
     public GameObject PickUpCanvas;
+    public List<Transform> spawns;
+    public GameObject menager;
+    SceneManagerBehaviour menagerScript;
     // Start is called before the first frame update
     void Start()
     {
-        var pickup = Instantiate(pickablePrefab, transform.position - new Vector3(5, 0, 5), transform.rotation);
+        foreach(Transform child in gameObject.transform)
+        {
+            spawns.Add(child);
+        }
+        var pickup = Instantiate(pickablePrefab, spawns[Random.Range(0,19)].position, transform.rotation) ;
         pickable.Add(pickup);
-        var pickup2 = Instantiate(pickablePrefab, transform.position + new Vector3(5, 0, 5), transform.rotation);
+        var pickup2 = Instantiate(pickablePrefab, spawns[Random.Range(0, 19)].position, transform.rotation);
         pickable.Add(pickup2);
+        var pickup3 = Instantiate(pickablePrefab, spawns[Random.Range(0, 19)].position, transform.rotation);
+        pickable.Add(pickup3);
+        var pickup4 = Instantiate(pickablePrefab, spawns[Random.Range(0, 19)].position, transform.rotation);
+        pickable.Add(pickup4);
+        var pickup5 = Instantiate(pickablePrefab, spawns[Random.Range(0, 19)].position, transform.rotation);
+        pickable.Add(pickup5);
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        PickUpCanvas = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
+        menager = GameObject.Find("Managers");
+        menagerScript = menager.GetComponent<SceneManagerBehaviour>();
     }
 
     // Update is called once per frame
@@ -29,6 +47,7 @@ public class PickableControllerScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     pickable.Remove(pick);
+                    menagerScript.SendMessage("AddItem", 5);
                     Destroy(pick);
                     PickUpCanvas.SetActive(false);
                 }
@@ -37,5 +56,10 @@ public class PickableControllerScript : MonoBehaviour
             else
                 PickUpCanvas.SetActive(false);
         }
+    }
+    private void OnDestroy()
+    {
+        foreach (GameObject pick in pickable)
+            Destroy(pick);
     }
 }

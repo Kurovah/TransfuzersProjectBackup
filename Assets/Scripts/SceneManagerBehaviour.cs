@@ -98,17 +98,17 @@ public class SceneManagerBehaviour : MonoBehaviour
     }
 
     #region add and remove items from inventory
-    public void AddItem(int index, int amount = 1)
+    public void AddItem( int amount)
     {
-        if (items.dictionary.ContainsKey(index))
+        if (items.dictionary.ContainsKey(1))
         {
-            items.dictionary[index] += 1;
+            items.dictionary[1] += amount;
         }
         else
         {
-            items.dictionary.Add(index, 1);
+            items.dictionary.Add(1, amount);
         }
-        InvenAddNotify(index);
+        InvenAddNotify(1);
     }
 
     public void RemoveItem(int index, int amount)

@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickable: []
-  pickablePrefab: {fileID: 696959197047164242, guid: b33bde0d3212c1b41880688a0fd54f09, type: 3}
+  pickablePrefab: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
   player: {fileID: 0}
   PickUpCanvas: {fileID: 0}
 --- !u!1 &3278557651806939473

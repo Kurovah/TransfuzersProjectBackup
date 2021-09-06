@@ -43,13 +43,17 @@ public class PlayerMovementThirdPersonJakub : MonoBehaviour
                 //change model rotation
                 model.rotation = Quaternion.LookRotation(moveDir.normalized);
 
+                
+                
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                
 
             }
             else
             {
                 anim.SetBool("Moving", false);
             }
+            
 
         }
 
