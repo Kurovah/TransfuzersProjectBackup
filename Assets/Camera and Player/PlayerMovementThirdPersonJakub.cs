@@ -23,7 +23,7 @@ public class PlayerMovementThirdPersonJakub : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        
+
 
         //move only when the game is not paused and not in building mode
         if (!SceneManagerBehaviour.isBuilding && !SceneManagerBehaviour.gamePaused)
@@ -39,18 +39,22 @@ public class PlayerMovementThirdPersonJakub : MonoBehaviour
 
                 Vector3 right = Vector3.Cross(Camera.main.transform.forward, Vector3.up);
                 Vector3 forward = Vector3.Cross(Vector3.up, right);
-                Vector3 moveDir = -right*horizontal + forward*vertical;
+                Vector3 moveDir = -right * horizontal + forward * vertical;
                 //change model rotation
                 model.rotation = Quaternion.LookRotation(moveDir.normalized);
 
+                
+                
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
                 
+
             }
             else
             {
                 anim.SetBool("Moving", false);
             }
             
+
         }
 
         if (Input.GetKeyDown(KeyCode.K))

@@ -90,8 +90,11 @@ public class EnemyMinionScript : MonoBehaviour
         float targetangle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetangle, ref turnSmoothVelocity, turnSmoothTime);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+        
         control.Move(direction * speed);
+        
+        
+        
         if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < 0.5f)
         {
             currentWaypoint++;
@@ -99,11 +102,9 @@ public class EnemyMinionScript : MonoBehaviour
     }
     public void Attack()
     {
-        /*gameController.SendMessage("EnemyDied");
+        gameController.SendMessage("EnemyDied");
         gameControllerScript.ShipHP -= 1;
-        Destroy(gameObject);*/
-        
-        animator.SetTrigger("Smash Attack");
+        Destroy(gameObject);
     }
     public void OnPathCompleted(Path p)
     {

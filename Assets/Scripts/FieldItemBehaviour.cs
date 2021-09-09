@@ -22,7 +22,7 @@ public class FieldItemBehaviour : MonoBehaviour
     {
         if (other.GetComponent<PlayerControllerScript>())
         {
-            SceneManagerBehaviour.AddItem(itemIndex, 1);
+            FindObjectOfType<SceneManagerBehaviour>().AddItem(1);
             Destroy(gameObject);
         }
     }
