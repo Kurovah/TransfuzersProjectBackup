@@ -27,16 +27,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            FindObjectOfType<SceneManagerBehaviour>().ToggleInventory();
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            FindObjectOfType<SceneManagerBehaviour>().RemoveItem(0, 1);
-        }
+    { 
 
         switch (currentState)
         {

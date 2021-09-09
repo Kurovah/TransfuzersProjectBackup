@@ -53,6 +53,22 @@ public class Item
 }
 
 [System.Serializable]
+public class DataLog
+{
+    public string name;
+    public enum logtype
+    {
+        enemy,
+        area,
+        item
+    }
+
+    public bool unlocked;
+    public Sprite Image;
+    public string logDescription;
+}
+
+[System.Serializable]
 public class TurretData
 {
     public List<RecipeComponent> components = new List<RecipeComponent>();

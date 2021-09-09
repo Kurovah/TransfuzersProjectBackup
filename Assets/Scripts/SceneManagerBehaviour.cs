@@ -10,18 +10,14 @@ public class SceneManagerBehaviour : MonoBehaviour
 {
     [Header("Areas")]
     public Transform pauseMenu;
-    public Transform pauseTabAreas;
     public Transform inventorySlotArea;
     public Transform itemGetNotifArea;
-    public Transform craftableTurretOptionArea;
-    public Transform craftingComponentListingArea;
     public Transform buildingHUD;
     public Transform standardHUD;
     [Header("Prefabs")]
     public GameObject itemGetNotifPrefab;
     public GameObject inventoryDisplayPrefab;
-    public GameObject craftableTurretOptionPrefab;
-    public GameObject craftingComponentPrefab;
+
     [Header("Cameras")]
     public CinemachineVirtualCamera overHeadCam;
     public CinemachineFreeLook thirdPersonCam;
@@ -34,22 +30,28 @@ public class SceneManagerBehaviour : MonoBehaviour
     public static bool isBuilding;
     public static bool gamePaused;
 
-    //for the selections that happen withing a tab
-    int subIndex = 0;
+    //static refs
+    static GameObject itemGetNotifPrefabStaticRef;
+    static Transform notifDisplayStaticRef;
 
+    //for the selections that happen withing a tab
+    public PauseMenuBehaviour pauseMenuBehaviour;
     
     
     // Start is called before the first frame update
     void Start()
     {
+        itemGetNotifPrefabStaticRef = itemGetNotifPrefab;
+        notifDisplayStaticRef = itemGetNotifArea;
+
         //for the purpose of testing, these wiill be blank at first
         items = new ItemInventory();
         turrets = new TurretInventory();
 
-
         inventory = new Dictionary<int, int>();
         TogglePause(false);
-        //UpdateInventoryUI();
+
+        //get pause menu so that you can pause it
     }
 
     // Update is called once per frame
@@ -92,13 +94,12 @@ public class SceneManagerBehaviour : MonoBehaviour
     public void TogglePause(bool newPausedState)
     {
         pauseMenu.gameObject.SetActive(newPausedState);
-        ChangeMenuTab(1);
-        UpdateTurretSynthesisList();
-        //changing cameras
+        pauseMenuBehaviour.ChangeMenuTab(0);
+        pauseMenuBehaviour.UpdateTab();
     }
 
     #region add and remove items from inventory
-    public void AddItem(int index, int amount = 1)
+    public  static void AddItem(int index, int amount = 1)
     {
         if (items.dictionary.ContainsKey(index))
         {
@@ -111,7 +112,7 @@ public class SceneManagerBehaviour : MonoBehaviour
         InvenAddNotify(index);
     }
 
-    public void RemoveItem(int index, int amount)
+    public static void RemoveItem(int index, int amount)
     {
         if (items.dictionary.ContainsKey(index))
         {
@@ -169,118 +170,15 @@ public class SceneManagerBehaviour : MonoBehaviour
         }
     }
     #endregion
-    public void ToggleInventory()
-    {
-        
-    }
-
-    public void InvenAddNotify(int index = 0)
+    public static void InvenAddNotify(int index = 0)
     {
         //look for the item that is being obtained and create a little popup on the side
         ItemData item = (ItemData)Resources.Load("ItemDataContainer");
-        var notif = Instantiate(itemGetNotifPrefab, itemGetNotifArea);
+        var notif = Instantiate(itemGetNotifPrefabStaticRef, notifDisplayStaticRef);
         notif.GetComponent<CollectionNotifBehaviour>().SetText(item.items[index].name);
     }
 
-    public void ChangeMenuTab(int newTab)
-    {
-        foreach (Transform item in pauseTabAreas)
-        {
-            item.gameObject.SetActive(false);
-        }
-        pauseTabAreas.GetChild(newTab).gameObject.SetActive(true);
-        subIndex = 0;
-    }
-
-    #region synthesis related
-    #region for displaying the recipes and crafting components
-
-    public void UpdateTurretSynthesisList()
-    {
-        TurretDataList recipelist = (TurretDataList)Resources.Load("TurretDataContainer");
-
-        //refresh list
-        foreach (Transform item in craftableTurretOptionArea)
-        {
-            Destroy(item.gameObject);
-        }
-        foreach (var item in recipelist.turretList)
-        {
-            var entry = Instantiate(craftableTurretOptionPrefab, craftableTurretOptionArea);
-            entry.GetComponent<Button>().onClick.AddListener(() => UpdateComponentList(entry.transform.GetSiblingIndex()));
-            entry.GetComponentInChildren<Text>().text = item.turretName;
-        }
-        UpdateComponentList(0);
-    }
-
-    public void UpdateComponentList(int recipieIndex)
-    {
-        TurretDataList recipelist = (TurretDataList)Resources.Load("TurretDataContainer");
-        ItemData itemList = (ItemData)Resources.Load("ItemDataContainer");
-        TurretData r = recipelist.turretList[recipieIndex];
-
-        //need to keeptrack of the index;
-        subIndex = recipieIndex;
-
-        //change color of clicked button by resetting all the button and changing the color of the selected one
-        foreach (Transform item in craftableTurretOptionArea)
-        {
-            item.gameObject.GetComponent<Image>().color = ColorPallette.colors[3];
-            item.gameObject.GetComponentInChildren<Text>().color = ColorPallette.colors[0];
-        }
-
-        craftableTurretOptionArea.GetChild(recipieIndex).gameObject.GetComponent<Image>().DOColor(ColorPallette.colors[0], .2f);
-        craftableTurretOptionArea.GetChild(recipieIndex).GetComponentInChildren<Text>().DOColor(ColorPallette.colors[2], .2f);
-
-        //refresh th component list
-        foreach (Transform item in craftingComponentListingArea)
-        {
-            Destroy(item.gameObject);
-        }
-
-        foreach (var item in r.components)
-        {
-            var entry = Instantiate(craftingComponentPrefab, craftingComponentListingArea);
-            //set the name of the  component
-            entry.transform.GetChild(0).GetComponent<Text>().text = itemList.items[item.itemIndex].name;
-            entry.transform.GetChild(1).GetComponent<Text>().text = item.itemAmount.ToString();
-            entry.transform.GetChild(2).GetComponent<Text>().text = getItemAmount(item.itemIndex).ToString();
-            //change colour of text depending on wether yoy have enough mats
-            entry.transform.GetChild(2).GetComponent<Text>().color = getItemAmount(item.itemIndex) >= item.itemAmount ? ColorPallette.colors[0] : ColorPallette.colors[4];
-        }
-
-        
-    }
-    #endregion
-
-    public void TrySynthesize()
-    {
-        TurretDataList recipelist = (TurretDataList)Resources.Load("TurretDataContainer");
-        TurretData r = recipelist.turretList[subIndex];
-        bool craftable = true;
-        //check if you have enough mats
-        foreach (var item in r.components)
-        {
-            if (item.itemAmount > getItemAmount(item.itemIndex))
-                craftable = false;
-        }
-
-        //remove if you do skip if you don't
-        if (craftable)
-        {
-            foreach (var item in r.components)
-            {
-                RemoveItem(item.itemIndex, item.itemAmount);
-                Debug.Log(getItemAmount(item.itemIndex));
-            }
-
-            AddTurret(subIndex);
-
-            UpdateComponentList(subIndex);
-        }
-        
-    }
-    #endregion
+   
     public static TurretData GetTurretData(int index)
     {
         TurretDataList tdl = Resources.Load("TurretDataContainer") as TurretDataList;

@@ -67,3 +67,33 @@ MonoBehaviour:
     turretName: Healing Turret
     unlocked: 0
     displayed: 0
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Power Station
+    unlocked: 0
+    displayed: 0
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Overdrive Station
+    unlocked: 0
+    displayed: 0
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Blazing Fog Generator
+    unlocked: 0
+    displayed: 0
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Voltic Fog Generator
+    unlocked: 0
+    displayed: 0
+  - components: []
+    prefab: {fileID: 0}
+    turretIcon: {fileID: 0}
+    turretName: Chilling Fog Generator
+    unlocked: 0
+    displayed: 0
