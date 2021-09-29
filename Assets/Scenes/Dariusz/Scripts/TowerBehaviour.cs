@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.SocialPlatforms;
 
 public class TowerBehaviour : MonoBehaviour
 {
